@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Section</title>
+    <style>
+        .gallery-section {
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+        .gallery-slider {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .gallery-slide {
+            width: 45%; /* Two images per row */
+            box-sizing: border-box;
+            padding: 10px;
+        }
+        .gallery-slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .gallery-controls {
+            margin-top: 10px;
+        }
+        .gallery-button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        .gallery-button:hover {
+            background-color: #0056b3;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+<style>
+  @font-face {
+      font-family: 'Gotham Light';
+      src: url('/font/Gotham-Light.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+  }
+  @font-face {
+      font-family: 'Gotham Bold';
+      src: url('/font/Gotham-Bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+  }
+  @font-face {
+      font-family: 'Gotham Light-bold';
+      src: url('/font/Gotham-Book.otf') format('opentype');
+     
+  }
+
+  body {
+      font-family: 'Gotham Light', sans-serif;
+  }
+  p{
+    font-family:'Gotham Light', sans-serif !important;
+  }
+  h2{
+    font-family:'Gotham Bold', sans-serif !important;
+    /* font-weight: 700; */
+  }
+  
+  div{
+    font-family:'Gotham Light', sans-serif !important;
+
+  }
+  #menu-menu1 li a{
+    font-family: 'Gotham Light-bold', sans-serif !important;
+    font-weight: bold;
+  }
+  .jkit-button-wrapper{
+    font-family: 'Gotham Light-bold', sans-serif !important;
+    font-weight: bold !important;
+  }
+
+
+  /* #menu-item-39 a{
+    font-family:'Gotham Italic', sans-serif !important;
+
+  } */
+
+</style>
+
+<link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <div class="gallery-section">
+        <div class="gallery-slider">
+            <div class="gallery-slide"><img src="assets/image/1.jpeg" alt="Image 1"></div>
+            <div class="gallery-slide"><img src="assets/image/1.jpeg" alt="Image 2"></div>
+            <div class="gallery-slide hidden toggle-slide"><img src="assets/image/1.jpeg" alt="Image 3"></div>
+            <div class="gallery-slide hidden toggle-slide"><img src="assets/image/1.jpeg" alt="Image 4"></div>
+            <div class="gallery-slide hidden toggle-slide"><img src="assets/image/1.jpeg" alt="Image 4"></div>
+            <div class="gallery-slide hidden toggle-slide"><img src="assets/image/1.jpeg" alt="Image 4"></div>
+        </div>
+        <div class="gallery-controls">
+            <button class="gallery-button" onclick="toggleImages()">Show More</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleImages() {
+            let hiddenSlides = document.querySelectorAll('.toggle-slide');
+            let button = document.querySelector('.gallery-button');
+            let isHidden = [...hiddenSlides].some(slide => slide.classList.contains('hidden'));
+            
+            hiddenSlides.forEach(slide => {
+                if (isHidden) {
+                    slide.classList.remove('hidden');
+                } else {
+                    slide.classList.add('hidden');
+                }
+            });
+            
+            button.textContent = isHidden ? 'Show Less' : 'Show More';
+        }
+    </script>
+</body>
+</html>
