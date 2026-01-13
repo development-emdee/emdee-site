@@ -62,7 +62,7 @@
     letter-spacing: var( --e-global-typography-d7cba0e-letter-spacing );
     word-spacing: var( --e-global-typography-d7cba0e-word-spacing );
     /* margin: 0px 2.5px 0px 2.5px; */
-    padding: 8px 15px 8px 15px;
+    padding: 8px 12px 8px 12px;
     color: var( --e-global-color-primary );
     border-style: solid;
     border-width: 1px 1px 1px 1px;
