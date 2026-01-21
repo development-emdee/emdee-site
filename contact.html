@@ -1815,6 +1815,7 @@ button:hover {
             }
             
             .div-button{
+                text-align: center;
             background-color:#002369 !important;
             color: white;
             padding: 12px;
@@ -1826,9 +1827,7 @@ button:hover {
             transition: 0.3s;
         }
         
-        .div-button:hover {
-            background-color: #002369 !important;
-        }
+        
             
             /* Animation */
             @keyframes fadeIn {
@@ -1861,7 +1860,7 @@ button:hover {
                         <input id="fphone" type="number" placeholder="Phone" required>
                         <!-- <input id="fmessage" type="text" placeholder="Subject" required> -->
                         <textarea id="fmessage" placeholder="Write Your Message" required></textarea>
-                        <button class="div-button" onclick="sendEmail()" >Send Message</button>
+                        <button style="background-color:#002369 !important; text-align: center;" class="div-button" onclick="sendEmail()" >Send Message</button>
                     </form>
                     <div id="alert_msg" style="width: 100%; height: 40px;" >
 
@@ -2686,7 +2685,7 @@ button:hover {
                                                 data-id="2b7af36" data-element_type="widget"
                                                 data-widget_type="text-editor.default">
                                                 <div class="elementor-widget-container">
-                                                    Copyright © 2025 EMDEE Ventures. All rights reserved. </div>
+                                                    Copyright © 2026 EMDEE Ventures. All rights reserved. </div>
                                             </div>
                                         </div>
                                     </div>
@@ -2853,13 +2852,13 @@ button:hover {
 src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script type="text/javascript">
-emailjs.init('Lh0tVliNk3_UiXc1i')
+emailjs.init('qfr-Yvu1x0EnHwoKe')
 </script>
 
 <script>
   
   (function(){
-    emailjs.init("Lh0tVliNk3_UiXc1i"); // Replace YOUR_USER_ID with your actual user ID from Email.js
+    emailjs.init("qfr-Yvu1x0EnHwoKe"); // Replace YOUR_USER_ID with your actual user ID from Email.js
   })();
   
   function sendEmail() {
@@ -2875,14 +2874,14 @@ emailjs.init('Lh0tVliNk3_UiXc1i')
     var alert_msg = document.getElementById("alert_msg")
     
     // Send email
-    emailjs.send("service_8xzu4yt","template_e3nkqxs", {
+    emailjs.send("service_xrbsbxp","template_exceh34", {
       from_name: femail,
       name: name,
       phone: phone,
       message: message,
 
     }).then(function(response) {
-      alert("Email sent successfully!");
+    //   alert("Email sent successfully!");
       alert_msg.style = "display:block";
       document.getElementById("fname").value = ""
       document.getElementById("femail").value=""
@@ -2902,7 +2901,7 @@ emailjs.init('Lh0tVliNk3_UiXc1i')
     <script>
       
       (function(){
-        emailjs.init("Lh0tVliNk3_UiXc1i"); // Replace YOUR_USER_ID with your actual user ID from Email.js
+        emailjs.init("qfr-Yvu1x0EnHwoKe"); // Replace YOUR_USER_ID with your actual user ID from Email.js
       })();
       
       function sendEmail2() {
@@ -2918,7 +2917,7 @@ emailjs.init('Lh0tVliNk3_UiXc1i')
         var alert_msg = document.getElementById("alert_msg")
         
         // Send email
-        emailjs.send("service_8xzu4yt","template_e3nkqxs", {
+        emailjs.send("service_xrbsbxp","template_exceh34", {
           from_name: femail,
           name: name,
           phone: phone,
