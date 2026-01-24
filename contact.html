@@ -1867,10 +1867,16 @@ button:hover {
                             <input id="fname" type="text" placeholder="Your Name" required>
                             <input id="femail" type="email" placeholder="Your Email" required>
                         </div>
-                        <input id="fphone" type="number" placeholder="Phone" required>
+                        <input
+  type="text"
+  id="fphone"
+  placeholder="Phone"
+  maxlength="11"
+  oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+/>
                         <!-- <input id="fmessage" type="text" placeholder="Subject" required> -->
                         <textarea id="fmessage" placeholder="Write Your Message" required></textarea>
-                        <button style="background-color:#002369 !important; text-align: center;" class="div-button" onclick="sendEmail()" >Send Message</button>
+                        <div style="border-radius: 20px; background-color:#002369 !important; text-align: center;" class="div-button" onclick="sendEmail()" >Send Message</div>
                     </form>
                     <div id="alert_msg" style="width: 100%; height: 40px;" >
 
@@ -2866,87 +2872,70 @@ emailjs.init('qfr-Yvu1x0EnHwoKe')
 </script>
 
 <script>
-  
-  (function(){
-    emailjs.init("qfr-Yvu1x0EnHwoKe"); // Replace YOUR_USER_ID with your actual user ID from Email.js
+  (function () {
+    emailjs.init("qfr-Yvu1x0EnHwoKe");
   })();
-  
+
   function sendEmail() {
     event.preventDefault(); // Prevent form submission
-    
-    // Get form data
-    var name = document.getElementById("fname").value;
-    var femail = document.getElementById("femail").value;
-    console.log(femail)
-    var phone = document.getElementById("fphone").value;
-    var message = document.getElementById("fmessage").value;
 
-    var alert_msg = document.getElementById("alert_msg")
-    
-    // Send email
-    emailjs.send("service_xrbsbxp","template_exceh34", {
+    // Get form data
+    var name = document.getElementById("fname").value.trim();
+    var femail = document.getElementById("femail").value.trim();
+    var phone = document.getElementById("fphone").value.trim();
+    var message = document.getElementById("fmessage").value.trim();
+
+    var alert_msg = document.getElementById("alert_msg");
+
+    // -------- VALIDATION --------
+    if (name === "" || femail === "" || phone === "" || message === "") {
+      alert("Please fill all fields");
+      return;
+    }
+
+    // Only numbers allowed
+    if (!/^\d+$/.test(phone)) {
+      alert("Phone number must contain only numbers");
+      return;
+    }
+
+    // Exactly 11 digits
+    if (phone.length !== 11) {
+      alert("Please enter a valid phone number");
+      return;
+    }
+
+    // Email validation
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(femail)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
+    // -------- SEND EMAIL --------
+    emailjs.send("service_xrbsbxp", "template_exceh34", {
       from_name: femail,
       name: name,
       phone: phone,
       message: message,
+    }).then(
+      function () {
+        alert_msg.style.display = "block";
 
-    }).then(function(response) {
-    //   alert("Email sent successfully!");
-      alert_msg.style = "display:block";
-      document.getElementById("fname").value = ""
-      document.getElementById("femail").value=""
-      document.getElementById("fphone").value=""
-      document.getElementById("fmessage").value=""
-
-    }, function(error) {
-      console.log("Email send failed:", error);
-      alert("Oops! Something went wrong.");
-    });
+        document.getElementById("fname").value = "";
+        document.getElementById("femail").value = "";
+        document.getElementById("fphone").value = "";
+        document.getElementById("fmessage").value = "";
+      },
+      function (error) {
+        console.log("Email send failed:", error);
+        alert("Oops! Something went wrong.");
+      }
+    );
   }
 </script>
 
 
-
-    
-    <script>
-      
-      (function(){
-        emailjs.init("qfr-Yvu1x0EnHwoKe"); // Replace YOUR_USER_ID with your actual user ID from Email.js
-      })();
-      
-      function sendEmail2() {
-        event.preventDefault(); // Prevent form submission
-        
-        // Get form data
-        var name = document.getElementById("fnamee").value;
-        var femail = document.getElementById("femaill").value;
-        console.log(femail)
-        var phone = document.getElementById("fphonee").value;
-        var message = document.getElementById("fmessagee").value;
-    
-        var alert_msg = document.getElementById("alert_msg")
-        
-        // Send email
-        emailjs.send("service_xrbsbxp","template_exceh34", {
-          from_name: femail,
-          name: name,
-          phone: phone,
-          message: message,
-    
-        }).then(function(response) {
-          alert("Email sent successfully!");
-         
-          document.getElementById("fnamee").value = ""
-          document.getElementById("femaill").value=""
-          document.getElementById("fphonee").value=""
-          document.getElementById("fmessagee").value=""
-    
-        }, function(error) {
-          console.log("Email send failed:", error);
-          alert("Oops! Something went wrong.");
-        });
-      }
-    </script>
     
 
 
