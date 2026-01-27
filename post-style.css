@@ -2244,7 +2244,7 @@
 }
 
 .elementor-11 .elementor-element.elementor-element-48161e6 .jeg-elementor-kit.jkit-postblock .jkit-post {
-    padding: 0px 0px 0px 0px;
+    padding: 0px 0px 20px 0px;
     margin: 0px 0px 0px 0px;
 }
 
@@ -2258,6 +2258,7 @@
 
 .elementor-11 .elementor-element.elementor-element-48161e6 .jeg-elementor-kit.jkit-postblock .jkit-postblock-content {
     text-align: left;
+    padding: 8px;
 }
 
 .elementor-11 .elementor-element.elementor-element-48161e6 .jeg-elementor-kit.jkit-postblock .jkit-post-title {

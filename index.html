@@ -653,6 +653,9 @@ p{
 
   gtag('config', 'G-68MN87DNMP');
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body style="position: relative;" class="home page-template page-template-elementor_header_footer page page-id-11 jkit-color-scheme elementor-default elementor-template-full-width elementor-kit-3 elementor-page elementor-page-11 e--ua-blink e--ua-chrome e--ua-webkit jkit-nav-menu-loaded" data-elementor-device-mode="desktop" cz-shortcut-listen="true">
@@ -1673,8 +1676,11 @@ window.onclick = function(event) {
 <style>
   .hero-section-slider {
   position: relative;
-  height: 550px;
+   width: 100vw;
+   height: 400px;
+  max-width: 100%;
   overflow: hidden;
+
   font-family: Arial, sans-serif;
 }
 
@@ -1686,7 +1692,8 @@ window.onclick = function(event) {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: left;
+  background-position: center center;
+  background-repeat: no-repeat;
   opacity: 0;
   transform: scale(1.05);
   transition: opacity 1s ease, transform 1s ease;
@@ -1799,11 +1806,26 @@ window.onclick = function(event) {
   background: #fff;
 }
 
+.destop-hero-img{
+   display: block;
+}
+.mobile-hero-img{
+    display: none;
+}
+
+
+.montserrat-400{
+  font-family: "Montserrat", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 
 @media (max-width: 768px) {
   .hero-section-slider {
   
-  height: 200px;
+  height: 459px;
  
 }
 .hero-section-slider__indicator {
@@ -1825,6 +1847,20 @@ window.onclick = function(event) {
   font-weight: 600;
 
 }
+.hero-section-slider__slide {
+  
+  background-size: cover ;
+  background-position: left;
+  background-repeat: no-repeat;
+
+}
+
+.destop-hero-img{
+   display: none;
+}
+.mobile-hero-img{
+    display: block;
+}
   
 }
 </style>
@@ -1832,7 +1868,9 @@ window.onclick = function(event) {
   <div class="hero-section-slider__slides">
 
     <div class="hero-section-slider__slide hero-section-slider__slide--active"
-         style="background-image:url('/assets/banner\ 1.png')">
+         style="">
+         <img class="destop-hero-img" src="/assets/new/banner 1 (1).png" style="width: 100%; height: 100%;" alt="">
+         <img class="mobile-hero-img" src="/assets/new/banner - mobile 1.png" alt="">
          <!-- <div style="width: 100%; height: 100%; position: relative;">
           <a href="/" style="position: absolute; top: 67%; left: 6%; width: 250px; height: 60px; background-color: red;">
 
@@ -1846,7 +1884,9 @@ window.onclick = function(event) {
     </div>
 
     <div class="hero-section-slider__slide"
-         style="background-image:url('/assets/banner\ 2.png')">
+      >
+          <img class="destop-hero-img" src="/assets/new/banner 2 (1).png" style="width: 100%; height: 100%;" alt="">
+          <img class="mobile-hero-img" src="/assets/new/banner - mobile 2.png" alt="">
       <!-- <div class="hero-section-slider__content">
         <h1>OUR APPROACH</h1>
         <p>A Well Structured Long-Term Investment Plan for Sustainable Growth and Stability.</p>
@@ -1858,11 +1898,11 @@ window.onclick = function(event) {
 
   <!-- Indicator -->
   <div class="hero-section-slider__indicator">
-    <span class="hero-section-slider__num hero-section-slider__num--active"><div style="padding: 5px; border-radius: 50%; background-color: #fff;">1</div></span>
+    <span class="hero-section-slider__num hero-section-slider__num--active montserrat-400"><div class="montserrat-400" style="padding: 5px; border-radius: 50%; background-color: #fff;">1</div></span>
     <span class="hero-section-slider__line">
       <span class="hero-section-slider__progress"></span>
     </span>
-    <span class="hero-section-slider__num"><div style="padding: 5px; border-radius: 50%; background-color: #fff;">2</div></span>
+    <span class="hero-section-slider__num montserrat-400"><div class="montserrat-400" style="padding: 5px; border-radius: 50%; background-color: #fff;">2</div></span>
   </div>
 </div>
 
@@ -2764,7 +2804,18 @@ We prioritise diversification, risk-aware decision-making, and adaptability to e
                   </div>
                 </section>
                 <style>
-                   
+                   .jkit-post:hover{
+                      background-color:#002369 ;
+                      border-radius: 20px;
+                   }
+                   .jkit-post:hover a{
+                      color: white !important;
+                      
+                   }
+                   .jkit-post:hover p{
+                      color: white !important;
+                      
+                   }
                     @media (max-width:786px) {
                         #our_service{
                  display: none;
@@ -2895,7 +2946,7 @@ We prioritise diversification, risk-aware decision-making, and adaptability to e
                             </div>
                             <div class="jkit-postblock-content">
                               <h3 class="jkit-post-title">
-                                <a>Financial Planning &amp; Investment Management</a>
+                                <a>Financial Planning &amp; Investment </a>
                               </h3>
                               <div class="jkit-post-excerpt">
                                 <p>
