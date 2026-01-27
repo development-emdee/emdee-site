@@ -1660,90 +1660,6 @@ window.onclick = function(event) {
 
 
 <style>
-  .carousel-container {
-    position: relative;
-    width: 100%;
-    height: 530px;
-    overflow: hidden;
-  }
-  .contentt h1 , .contentt h2 {
-    color: white;
-    max-width: 1200px;
-    margin: auto;
-    padding-bottom: 30px;
-  }
-
-  /* Background Video */
-  .bg-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-  }
-
-  /* Overlay */
-  .video-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 2;
-  }
-
-  .carousel {
-    position: relative;
-    z-index: 3;
-    display: flex;
-    transition: transform 0.6s ease-in-out;
-    height: 100%;
-  }
-
-  .slide {
-    min-width: 100%;
-    position: relative;
-  }
-
-  .contentt {
-    position: absolute;
-    top: 50%;
-    /* left: 10%; */
-    transform: translateY(-50%);
-    color: white;
-    margin: auto;
-    width: 100%;
-    /* max-width: 1200px; */
-  }
-
-  .button {
-    background: #002369;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: white;
-    display: inline-block;
-    margin-top: 30px;
-  }
-
-  .indicators {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    z-index: 4;
-  }
-
-  .dot {
-    width: 10px;
-    height: 10px;
-    background: white;
-    border-radius: 50%;
-    margin: 5px;
-    cursor: pointer;
-    opacity: 0.5;
-  }
-
  
 
   @media (max-width:768px) {
@@ -1754,77 +1670,268 @@ window.onclick = function(event) {
   }
 </style>
 
+<style>
+  .hero-section-slider {
+  position: relative;
+  height: 550px;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
 
-<div class="carousel-container">
+.hero-section-slider__slides {
+  height: 100%;
+}
 
-  <!-- Background Video -->
-  <video class="bg-video" autoplay muted loop playsinline>
-    <source src="/assets/home-banner.mp4" type="video/mp4">
-  </video>
+.hero-section-slider__slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: left;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 1s ease, transform 1s ease;
+}
 
-  <div class="video-overlay"></div>
+.hero-section-slider__slide--active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
 
-  <!-- Content Slider -->
-  <div class="carousel">
+/* .hero-section-slider__slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,40,100,.85),
+    rgba(0,40,100,.35)
+  );
+} */
 
-    <div class="slide">
-      <div class="contentt">
-        <h1 style="text-align: center;">EMDEE VENTURES</h1>
-        <h2 style="text-align: center;">Where your financial goals meet our expertise for a future of lasting prosperity.</h2>
-        <div style="display: flex; justify-content: center; align-items: center;">
-        <a href="/who-we-are.html" class="button" style="color: white !important;">Learn More</a>
-        </div>
-      </div>
+.hero-section-slider__content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  padding: 120px 80px;
+  color: #fff;
+}
+
+.hero-section-slider__content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-section-slider__content p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.hero-section-slider__btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 26px;
+  border: 2px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+}
+
+/* Indicator */
+/* Indicator container */
+.hero-section-slider__indicator {
+  position: absolute;
+  bottom: 40px;
+  right: 80px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 10;
+}
+
+/* Number wrapper */
+.hero-section-slider__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+/* Active number */
+.hero-section-slider__num--active {
+  opacity: 1;
+}
+
+/* Inner circle (your inline div) */
+.hero-section-slider__num > div {
+  width: 28px;
+  height: 28px;
+  padding: 0 !important; /* override inline padding */
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Line container */
+.hero-section-slider__line {
+  width: 90px;
+  height: 2px;
+  background: rgba(255,255,255,0.3);
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+/* Animated progress */
+.hero-section-slider__progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: #fff;
+}
+
+
+@media (max-width: 768px) {
+  .hero-section-slider {
+  
+  height: 200px;
+ 
+}
+.hero-section-slider__indicator {
+  
+  bottom: 10px;
+  right: 15px;
+ 
+}
+.hero-section-slider__line {
+  width: 40px;
+  height: 2px;
+
+}
+.hero-section-slider__num > div {
+  width: 15px;
+  height: 15px;
+ 
+  font-size: 10px;
+  font-weight: 600;
+
+}
+  
+}
+</style>
+<div class="hero-section-slider">
+  <div class="hero-section-slider__slides">
+
+    <div class="hero-section-slider__slide hero-section-slider__slide--active"
+         style="background-image:url('/assets/banner\ 1.png')">
+         <!-- <div style="width: 100%; height: 100%; position: relative;">
+          <a href="/" style="position: absolute; top: 67%; left: 6%; width: 250px; height: 60px; background-color: red;">
+
+          </a>
+         </div> -->
+      <!-- <div class="hero-section-slider__content">
+        <h1>EMDEE VENTURES</h1>
+        <p>Where your financial goals meet our expertise for a future of lasting prosperity.</p>
+        <a href="#" class="hero-section-slider__btn">Learn More →</a>
+      </div> -->
     </div>
 
-    <div class="slide">
-      <div class="contentt">
-        <h1 style="text-align: center;">OUR PLAN</h1>
-        <h2 style="text-align: center;">A Focused Approach to Short-Term Investments for Quick Returns.</h2>
-        <div style="display: flex; justify-content: center; align-items: center;">
-        <a href="/contact.html" class="button" style="color: white !important;">Learn More</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="slide">
-      <div class="contentt">
-        <h1 style="text-align: center;">OUR PLAN</h1>
-        <h2 style="text-align: center;">A Well-Structured Long-Term Investment Plan for Sustainable Growth and Stability.</h2>
-        <div style="display: flex; justify-content: center; align-items: center;">
-        <a href="/contact.html" class="button" style="color: white !important;">Learn More</a>
-        </div>
-      </div>
+    <div class="hero-section-slider__slide"
+         style="background-image:url('/assets/banner\ 2.png')">
+      <!-- <div class="hero-section-slider__content">
+        <h1>OUR APPROACH</h1>
+        <p>A Well Structured Long-Term Investment Plan for Sustainable Growth and Stability.</p>
+        <a href="#" class="hero-section-slider__btn">Learn More →</a>
+      </div> -->
     </div>
 
   </div>
 
-  <!-- Dots -->
-  <div class="indicators">
-    <span class="dot active" onclick="changeSlide(0)"></span>
-    <span class="dot" onclick="changeSlide(1)"></span>
-    <span class="dot" onclick="changeSlide(2)"></span>
+  <!-- Indicator -->
+  <div class="hero-section-slider__indicator">
+    <span class="hero-section-slider__num hero-section-slider__num--active"><div style="padding: 5px; border-radius: 50%; background-color: #fff;">1</div></span>
+    <span class="hero-section-slider__line">
+      <span class="hero-section-slider__progress"></span>
+    </span>
+    <span class="hero-section-slider__num"><div style="padding: 5px; border-radius: 50%; background-color: #fff;">2</div></span>
   </div>
 </div>
 
-<script>
-  let currentIndex = 0;
-  const slides = document.querySelectorAll(".slide");
-  const dots = document.querySelectorAll(".dot");
-  const carousel = document.querySelector(".carousel");
 
-  function changeSlide(index) {
-    dots[currentIndex].classList.remove("active");
-    currentIndex = index;
-    dots[currentIndex].classList.add("active");
-    carousel.style.transform = `translateX(-${index * 100}%)`;
+<script>
+(function () {
+  const slider = document.querySelector(".hero-section-slider");
+  if (!slider) return;
+
+  const slides = slider.querySelectorAll(".hero-section-slider__slide");
+  const nums = slider.querySelectorAll(".hero-section-slider__num");
+  const progress = slider.querySelector(".hero-section-slider__progress");
+
+  let index = 0;
+  const duration = 3000;
+  let interval;
+
+  function startProgress() {
+    progress.style.transition = "none";
+    progress.style.width = "0%";
+
+    requestAnimationFrame(() => {
+      progress.style.transition = `width ${duration}ms linear`;
+      progress.style.width = "100%";
+    });
   }
 
-  setInterval(() => {
-    let next = (currentIndex + 1) % slides.length;
-    changeSlide(next);
-  }, 5000);
+  function showSlide(i) {
+    slides.forEach(s =>
+      s.classList.remove("hero-section-slider__slide--active")
+    );
+    nums.forEach(n =>
+      n.classList.remove("hero-section-slider__num--active")
+    );
+
+    slides[i].classList.add("hero-section-slider__slide--active");
+    nums[i].classList.add("hero-section-slider__num--active");
+
+    startProgress();
+  }
+
+  function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  }
+
+  function startAutoSlide() {
+    clearInterval(interval);
+    interval = setInterval(nextSlide, duration);
+  }
+
+  // 👉 Click on indicator (1 / 2)
+  nums.forEach((num, i) => {
+    num.addEventListener("click", () => {
+      index = i;
+      showSlide(index);
+      startAutoSlide(); // reset timer after click
+    });
+  });
+
+  // Init
+  showSlide(index);
+  startAutoSlide();
+})();
 </script>
+
+
+
+
 
    
  <style>
